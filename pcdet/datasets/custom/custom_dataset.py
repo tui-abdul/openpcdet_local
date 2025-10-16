@@ -30,6 +30,7 @@ class CustomDataset(DatasetTemplate):
         self.custom_infos = []
         self.include_data(self.mode)
         self.map_class_to_kitti = self.dataset_cfg.MAP_CLASS_TO_KITTI
+        
 
     def include_data(self, mode):
         self.logger.info('Loading Custom dataset.')
@@ -59,6 +60,7 @@ class CustomDataset(DatasetTemplate):
             line_list = line.strip().split(' ')
             gt_boxes.append(line_list[:-1])
             gt_names.append(line_list[-1])
+            #print(gt_boxes)
 
         return np.array(gt_boxes, dtype=np.float32), np.array(gt_names)
 

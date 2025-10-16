@@ -1,12 +1,18 @@
 DATASET: 'CustomDataset'
-DATA_PATH: '../data/custom'
+DATA_PATH: '/workspace/OpenPCDet/data/custom'
 
-POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+POINT_CLOUD_RANGE: [-40, -40, -5, 40, 40, 1]
 
 MAP_CLASS_TO_KITTI: {
-    'Vehicle': 'Car',
+    'Car': 'Car',
     'Pedestrian': 'Pedestrian',
     'Cyclist': 'Cyclist',
+    'Bus': 'DontCare',
+    'Truck': 'DontCare',
+    'Bike': 'DontCare',
+    'Trolley': 'DontCare',
+    'Van': 'DontCare',
+    'Misc': 'DontCare'
 }
 
 DATA_SPLIT: {
@@ -21,7 +27,7 @@ INFO_PATH: {
 
 POINT_FEATURE_ENCODING: {
     encoding_type: absolute_coordinates_encoding,
-    used_feature_list: ['x', 'y', 'z', 'intensity'],
+    used_feature_list: ['x', 'y', 'z'],
     src_feature_list: ['x', 'y', 'z', 'intensity'],
 }
 
@@ -62,7 +68,7 @@ DATA_PROCESSOR:
       }
 
     - NAME: transform_points_to_voxels
-      VOXEL_SIZE: [0.1, 0.1, 0.15]
+      VOXEL_SIZE: [0.2, 0.2, 0.15]
       MAX_POINTS_PER_VOXEL: 5
       MAX_NUMBER_OF_VOXELS: {
         'train': 150000,
